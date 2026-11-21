@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CSA Team Publications</title>
+<meta name="description" content="Case studies, one-pagers, and resources from the Curriculum Systems Advising team at the Partnership for Los Angeles Schools.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap">
+<style>
+/* Colors and type follow the Partnership Style Guide 2026 (primary + secondary palettes; Avenir LT Std / Nunito, Playfair Display sparingly for cover titles).
+   Layout: teal brand band with intro, then a 3/2/1-column grid of publication cards with typographic covers, closing CTA band back to the CSA page. Colors sampled from partnershipla.org; Avenir with Nunito Sans as the web fallback. */
+:root {
+  --teal: #0074a1;
+  --navy: #003d54;
+  --sky: #009ad4;
+  --green: #57bd84;
+  --yellow: #ffea86;
+  --orange: #e76a40;
+  --orange-ink: #c4522c;
+  --bg: #f5f8f9;
+  --surface: #ffffff;
+  --fg: #231f20;
+  --muted: #55565a;
+  --line: #dbe4e8;
+  --band-fg: #ffffff;
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font: "Avenir LT Std", "Avenir Next", Avenir, Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1a20; --surface: #12262e; --fg: #e8f0f3; --muted: #a9b8be; --line: #23404b;
+    --teal: #00668d; --navy: #04303f; --orange-ink: #f08a63; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1a20; --surface: #12262e; --fg: #e8f0f3; --muted: #a9b8be; --line: #23404b;
+  --teal: #00668d; --navy: #04303f; --orange-ink: #f08a63; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--font); font-size: 1rem; line-height: 1.55; font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+/* Hero band */
+.hero {
+  position: relative; overflow: hidden;
+  background: var(--teal); color: var(--band-fg);
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding-top: calc(env(safe-area-inset-top, 0px) + 2.25rem);
+  padding-bottom: 3rem;
+}
+.hero .wrap { display: grid; gap: 1.5rem; position: relative; z-index: 1; }
+.hero::after { /* logo icon as a low-opacity accent, per the style guide */
+  content: ""; position: absolute; right: -60px; bottom: -70px; width: min(440px, 70vw); aspect-ratio: 402 / 449;
+  background: url("swirl.png") no-repeat center / contain; opacity: .1; pointer-events: none;
+}
+.brand-rule { height: 6px; background: linear-gradient(90deg, var(--yellow), var(--green) 33%, var(--sky) 66%, var(--orange)); }
+.org {
+  display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+  font-weight: 600; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
+  text-decoration: none; opacity: .92;
+}
+.org { align-self: start; justify-self: start; }
+.logo { display: block; height: clamp(52px, 9vw, 72px); width: auto; max-width: 100%; }
+h1 {
+  margin: 0; font-weight: 800; letter-spacing: -.01em;
+  font-size: clamp(2rem, 5.4vw, 3.4rem); line-height: 1.08; text-wrap: balance; max-width: 18ch;
+}
+.lede { margin: 0; max-width: 60ch; font-size: clamp(1.05rem, 2vw, 1.2rem); font-weight: 300; }
+.lede strong { font-weight: 600; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .25rem; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .8rem 1.25rem; border-radius: 6px; border: 2px solid transparent;
+  font-weight: 800; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: transform .15s ease, background-color .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-orange { background: var(--orange); color: #fff; }
+.btn-orange:hover { background: #d95a30; }
+.btn-ghost { border-color: rgba(255,255,255,.7); color: #fff; }
+.btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+/* Publications */
+main { padding-block: 3rem 3.5rem; }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+h2 { margin: 0; font-size: 1.6rem; font-weight: 800; color: var(--fg); }
+.count { color: var(--muted); font-size: .95rem; }
+.grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 580px) { .grid { grid-template-columns: 1fr; } .cover { aspect-ratio: 5 / 2; } .cover.has-thumb { aspect-ratio: 16 / 10; } }
+
+.card {
+  display: flex; flex-direction: column; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0;
+}
+.cover {
+  position: relative; aspect-ratio: 16 / 9; max-width: 100%; padding: 1.1rem 1.2rem;
+  color: #fff; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+}
+.cover.navy { background: var(--navy); }
+.cover.teal { background: var(--teal); }
+.cover.sky { background: var(--sky); }
+.cover::after { /* stacked bars: a nod to building systems */
+  content: ""; position: absolute; right: -6%; bottom: -12%; width: 46%; aspect-ratio: 1;
+  background: repeating-linear-gradient(-35deg, rgba(255,255,255,.13) 0 10px, transparent 10px 22px);
+  border-radius: 50%;
+}
+.cover.has-thumb { background: #fff; border-bottom: 1px solid var(--line); justify-content: flex-end; }
+.cover.has-thumb::after { display: none; }
+.thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .3s ease; }
+.card:hover .thumb { transform: scale(1.03); }
+.has-thumb .type { display: none; }
+.meta b { color: var(--orange-ink); font-weight: 800; }
+.type {
+  align-self: flex-start; position: relative; z-index: 1;
+  background: var(--orange); color: #fff; border-radius: 4px; padding: .2rem .5rem;
+  font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+}
+.cover-title { position: relative; z-index: 1; margin: 0; font-family: var(--display); font-size: 1.45rem; line-height: 1.15; font-weight: 700; text-wrap: balance; max-width: 15ch; }
+.body { padding: 1.1rem 1.2rem 1.25rem; display: flex; flex-direction: column; gap: .9rem; flex: 1; }
+.body h3 { margin: 0; font-size: 1.08rem; font-weight: 800; line-height: 1.3; }
+.body p { margin: 0; color: var(--muted); font-size: .95rem; }
+.meta { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
+.view {
+  margin-top: auto; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: .45rem;
+  color: var(--orange-ink); font-weight: 800; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+}
+.view svg { width: 16px; height: 16px; transition: transform .15s ease; }
+.card:hover .view svg { transform: translateX(3px); }
+.view::after { content: ""; position: absolute; inset: 0; } /* whole card clickable */
+.card { position: relative; }
+.card:hover { border-color: var(--teal); }
+
+/* CTA band */
+.cta { background: var(--navy); color: #fff; padding-block: 2.75rem; }
+.cta .wrap { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; align-items: center; justify-content: space-between; }
+.cta h2 { color: #fff; font-size: 1.5rem; }
+.cta p { margin: .35rem 0 0; max-width: 52ch; font-weight: 300; opacity: .9; }
+.cta .contact-line { font-size: .92rem; }
+.cta .email { font-weight: 600; user-select: all; overflow-wrap: anywhere; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+footer { padding-block: 1.5rem 2rem; color: var(--muted); font-size: .85rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; }
+footer a { color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="org" href="https://partnershipla.org/" target="_blank" rel="noopener">
+      <img class="logo" src="logo.png" width="720" height="196" alt="Partnership for Los Angeles Schools">
+    </a>
+    <h1>Curriculum Systems Advising</h1>
+    <p class="lede">We build the structures schools need to deliver excellent instruction every day. Explore our latest <strong>case studies, one-pagers, and tools</strong> on implementing high-quality math curriculum in Los Angeles Unified.</p>
+    <div class="hero-actions">
+      <a class="btn btn-orange" href="https://partnershipla.org/curriculum-systems-advising/" target="_blank" rel="noopener">Visit our team page</a>
+      <a class="btn btn-ghost" href="#publications">Browse publications</a>
+    </div>
+  </div>
+</header>
+<div class="brand-rule" aria-hidden="true"></div>
+
+<main id="publications">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Publications</h2>
+      <span class="count">6 resources · tap any card to open</span>
+    </div>
+    <ul class="grid">
+      <li class="card">
+        <div class="cover has-thumb"><img class="thumb" src="covers/all-systems-go.jpg" alt="Cover of the All Systems Go case study, Choosing to Change" loading="lazy"><span class="type">Case study</span></div>
+        <div class="body">
+          <span class="meta"><b>Case study</b> · July 2026</span>
+          <h3>Choosing to Change</h3>
+          <p>How LAUSD used opt-in adoption of Illustrative Mathematics, with partner support, to bring nearly every middle school onto a shared math curriculum.</p>
+          <a class="view" href="https://static1.squarespace.com/static/69779d393f31e715299b0694/t/6a6cf8a1d772f92206931f71/1785526433596/CPRL-All-Systems-Go-Case-Study-LAUSD_FINAL_v4.pdf" target="_blank" rel="noopener">Read the case study <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </li>
+      <li class="card">
+        <div class="cover has-thumb"><img class="thumb" src="covers/csa-one-pager.jpg" alt="First page of the CSA one-pager" loading="lazy"><span class="type">One-pager</span></div>
+        <div class="body">
+          <span class="meta"><b>One-pager</b> · About our team</span>
+          <h3>All Students Can Succeed in Mathematics</h3>
+          <p>Who we are and how we partner with LAUSD leaders to build a shared vision for equitable, joyful, grade-level math instruction.</p>
+          <a class="view" href="https://drive.google.com/file/d/1hARFq7WknaPZVhETuNvPkuoa1585XZkZ/view" target="_blank" rel="noopener">View the one-pager <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </li>
+      <li class="card">
+        <div class="cover has-thumb" style="justify-content: flex-start"><img class="thumb" src="covers/enabling-conditions.jpg" alt="Cover of Enabling Conditions for Curriculum Implementation" loading="lazy" style="object-position: center bottom"><span class="type">Checklist</span></div>
+        <div class="body">
+          <span class="meta"><b>Checklist</b> · For school leaders</span>
+          <h3>Enabling Conditions for Curriculum Implementation</h3>
+          <p>A self-assessment drawn from five years of HQIM implementation in LAUSD, with reflection questions to inventory your current structures and systems.</p>
+          <a class="view" href="https://drive.google.com/file/d/1TUya2yjOZRBiuMG2z9UZgEpbzF4ch_TG/view" target="_blank" rel="noopener">Open the checklist <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </li>
+      <li class="card">
+        <div class="cover has-thumb"><img class="thumb" src="covers/clinton.jpg" alt="First page of the Clinton Middle School bright spot profile" loading="lazy"><span class="type">Bright spot</span></div>
+        <div class="body">
+          <span class="meta"><b>Bright spot</b> · School profile</span>
+          <h3>Bright Spot Schools: Clinton Middle School</h3>
+          <p>How coherence, consistency, and a strong culture of belonging helped a South-Central LA middle school thrive with Illustrative Mathematics.</p>
+          <a class="view" href="https://drive.google.com/file/d/1d09ZvmNSsadzS5HCFhjnLyqBbPOp5-uX/view" target="_blank" rel="noopener">Read the profile <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </li>
+      <li class="card">
+        <div class="cover has-thumb"><img class="thumb" src="covers/grown-from-within.jpg" alt="Cover of Grown From Within" loading="lazy"><span class="type">Report</span></div>
+        <div class="body">
+          <span class="meta"><b>Report</b> · Math PD Leads</span>
+          <h3>Grown From Within</h3>
+          <p>LAUSD's peer-led approach to transforming math professional development, addressing both the head and the heart.</p>
+          <a class="view" href="https://drive.google.com/file/d/1dhliFCgBVPaL4Lre9Tu6WuSK7BlQUR48/view" target="_blank" rel="noopener">Read the report <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </li>
+      <li class="card">
+        <div class="cover has-thumb"><img class="thumb" src="covers/coaching.jpg" alt="First page of the coaching webinar one-pager" loading="lazy"><span class="type">One-pager</span></div>
+        <div class="body">
+          <span class="meta"><b>One-pager</b> · Coaching webinar</span>
+          <h3>Building Coaching Capacity</h3>
+          <p>How strategic instructional coaching systems advance and sustain improvements for teachers and students.</p>
+          <a class="view" href="https://drive.google.com/file/d/1E5bLwJUjYL0k4zb-sqo7mlp-ynYxbqUB/view" target="_blank" rel="noopener">View the one-pager <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</main>
+
+<section class="cta">
+  <div class="wrap">
+    <div>
+      <h2>Want to learn more?</h2>
+      <p>See how Curriculum Systems Advising works with district, school, and teacher leaders, or reach out to our team with questions.</p>
+      <p class="contact-line">Contact: <span class="email">Allyson.rohrbach@partnershipla.org</span></p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-orange" href="https://partnershipla.org/curriculum-systems-advising/" target="_blank" rel="noopener">Explore Curriculum Systems Advising</a>
+      <a class="btn btn-ghost" href="mailto:Allyson.rohrbach@partnershipla.org?subject=Curriculum%20Systems%20Advising">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Partnership for Los Angeles Schools</span>
+    <a href="https://partnershipla.org/" target="_blank" rel="noopener">partnershipla.org</a>
+  </div>
+</footer>
+</body>
+</html>
